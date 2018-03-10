@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using EpicSoftware.Fulfilment.Context;
-using EpicSoftware.Fulfilment.Domain;
 using EpicSoftware.Fulfilment.Domain.Order;
 using EpicSoftware.Fulfilment.Repository.Orders;
 using Microsoft.EntityFrameworkCore;
@@ -11,41 +10,63 @@ namespace EpicSoftware.Fulfilment.Tests.Orders
 {
     public class OrderContextTest
     {
-        [Fact]
-        public async Task AddNewOrder()
+        private readonly OrdersService.OrdersService _service;
+        private readonly IOrderRepository _repository;
+        
+        public OrderContextTest()
         {
-            var repo = await GetInMemoryOrderRepository();
-            var order = new Order
-            {
-                ProductId = "51dssdcsdcsdc",
-                ProductJson = "{name: 'Test Product', price: 1.99, currency: 'USD'}",
-                OrderDate = DateTime.Now,
-                OrderComplete = false,
-                UserId = 1,
-                Quantity = 1,
-                WorkflowId = 1
-            };
+            _repository = GetInMemoryOrderRepository();
+            _service = new OrdersService.OrdersService(_repository);
+            AddNewOrder();
+        }
+        
+        [Fact]
+        public async Task OrdersServiceTest()
+        {
+            var result = await _service.GetAllOpenOrders();
+            Assert.Equal(1, result.Count);
+        }
 
-            await repo.Create(order);
-            var total = await repo.GetAll();
+        [Fact]
+        public async Task VerifyOrderDetails()
+        {
+            var order = await _repository.GetById(1);
+            var total = await _repository.GetAllOpenOrders();
             Assert.Equal(1, total.Count);
             Assert.Equal("51dssdcsdcsdc", order.ProductId);
             Assert.Equal(false, order.OrderComplete);
             Assert.Equal(1, order.UserId);
             Assert.Equal(1, order.Quantity);
             Assert.Equal(1, order.WorkflowId);
-            Assert.Null(order.OrderCompleteDate);
+        }
+        
+        private void AddNewOrder()
+        {
+            var order = new Order
+            {
+                Id = 1,
+                ProductId = "51dssdcsdcsdc",
+                ProductJson = "{name: 'Test Product', price: 1.99, currency: 'USD'}",
+                OrderDate = DateTime.Now,
+                OrderCompleteDate = DateTime.Now,
+                OrderComplete = false,
+                UserId = 1,
+                Quantity = 1,
+                WorkflowId = 1
+            };
+
+            _repository.Create(order);
+
         }
 
-
-        private static async Task<IOrderRepository> GetInMemoryOrderRepository()
+        private static IOrderRepository GetInMemoryOrderRepository()
         {
             var builder = new DbContextOptionsBuilder<FulfilmentContext>();
             builder.UseInMemoryDatabase("Test");
             var options = builder.Options;
             var context = new FulfilmentContext(options);
-            await context.Database.EnsureDeletedAsync();
-            await context.Database.EnsureCreatedAsync();
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
             return new OrderRepository(context);
         }
     }

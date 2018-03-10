@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Swashbuckle.AspNetCore.Swagger;
 using EpicSoftware.Fulfilment.Context;
+using EpicSoftware.Fulfilment.Repository.Orders;
 using Microsoft.EntityFrameworkCore;
 
 namespace EpicSoftware.Fulfilment.Api
@@ -54,9 +55,15 @@ namespace EpicSoftware.Fulfilment.Api
                     break;
             }
             
+            //Repositories
+            services.AddTransient<IOrderRepository, OrderRepository>();
+            
+            //Services
+            services.AddTransient<OrdersService.OrdersService, OrdersService.OrdersService>();
+            
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v2", new Info { Title = "Fulfilment API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Fulfilment API", Version = "v1" });
                 c.AddSecurityDefinition("Bearer", new ApiKeyScheme()
                 {
                     Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",

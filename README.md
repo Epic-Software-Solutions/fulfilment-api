@@ -35,4 +35,6 @@ You will need a SQL database for the fufilment engine. You can use any of the da
 * PostgreSQL
 * MySQL, MariaDB
 
+You will need to add a SQL_CONNECTION environment variable to contain your SQL connection string
+
 

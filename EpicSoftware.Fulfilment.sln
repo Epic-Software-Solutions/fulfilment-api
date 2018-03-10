@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpicSoftware.Fulfilment.Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpicSoftware.Fulfilment.Repository", "EpicSoftware.Fulfilment.Repository\EpicSoftware.Fulfilment.Repository.csproj", "{1CE250BE-524A-4C7F-A59C-271E3E5198DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpicSoftware.Fulfilment.OrdersService", "EpicSoftware.Fulfilment.OrdersService\EpicSoftware.Fulfilment.OrdersService.csproj", "{FEDA6171-602A-499D-A061-CD1033D6B557}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1CE250BE-524A-4C7F-A59C-271E3E5198DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CE250BE-524A-4C7F-A59C-271E3E5198DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CE250BE-524A-4C7F-A59C-271E3E5198DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEDA6171-602A-499D-A061-CD1033D6B557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEDA6171-602A-499D-A061-CD1033D6B557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEDA6171-602A-499D-A061-CD1033D6B557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEDA6171-602A-499D-A061-CD1033D6B557}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
