@@ -1,3 +1,6 @@
+### Status
+[![Build Status](https://travis-ci.org/Epic-Software-Solutions/fulfilment-api.png)](https://travis-ci.org/Epic-Software-Solutions/fulfilment-api)
+
 # fulfilment-api
 Fulfilment API
 
