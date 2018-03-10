@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EpicSoftware.Fulfilment.Context\EpicSoftware.Fulfilment.Context.csproj">
+      <Project>{3F3CA5AD-F64D-4079-A2AD-EECC197648A3}</Project>
+      <Name>EpicSoftware.Fulfilment.Context</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EpicSoftware.Fulfilment.Domain\EpicSoftware.Fulfilment.Domain.csproj">
+      <Project>{142ADA73-5D5E-41AC-864F-0D06B4D3551E}</Project>
+      <Name>EpicSoftware.Fulfilment.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0-preview1-final" />
+  </ItemGroup>
+</Project>

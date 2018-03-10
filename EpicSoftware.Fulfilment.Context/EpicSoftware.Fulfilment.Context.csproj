@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.0-preview1-final" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EpicSoftware.Fulfilment.Domain\EpicSoftware.Fulfilment.Domain.csproj">
+      <Project>{142ADA73-5D5E-41AC-864F-0D06B4D3551E}</Project>
+      <Name>EpicSoftware.Fulfilment.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
