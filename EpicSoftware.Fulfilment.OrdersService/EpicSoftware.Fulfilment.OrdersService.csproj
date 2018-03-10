@@ -3,9 +3,16 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EpicSoftware.Fulfilment.Dtos\EpicSoftware.Fulfilment.Dtos.csproj">
+      <Project>{319445EB-629F-4C5F-9385-A436DCD97AAC}</Project>
+      <Name>EpicSoftware.Fulfilment.Dtos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EpicSoftware.Fulfilment.Repository\EpicSoftware.Fulfilment.Repository.csproj">
       <Project>{1CE250BE-524A-4C7F-A59C-271E3E5198DF}</Project>
       <Name>EpicSoftware.Fulfilment.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
   </ItemGroup>
 </Project>

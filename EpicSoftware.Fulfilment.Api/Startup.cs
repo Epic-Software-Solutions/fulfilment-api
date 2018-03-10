@@ -1,4 +1,5 @@
 ﻿using System;
+using EpicSoftware.Fulfilment.Api.MappingProfiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -60,6 +61,15 @@ namespace EpicSoftware.Fulfilment.Api
             
             //Services
             services.AddTransient<OrdersService.OrdersService, OrdersService.OrdersService>();
+            
+            //Automapper
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new OrderProfile());
+            });
+
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
             
             services.AddSwaggerGen(c =>
             {
