@@ -1,6 +1,5 @@
 ### Status
 [![Build Status](https://travis-ci.org/Epic-Software-Solutions/fulfilment-api.png)](https://travis-ci.org/Epic-Software-Solutions/fulfilment-api)
-
 # fulfilment-api
 Fulfilment API
 
@@ -16,6 +15,8 @@ The API provides the following services
 ## Pre-requisites
 
 ### Desktop
+![MyGet tenant](https://img.shields.io/badge/dotnetcore-2.0.3--sdk-green.svg?longCache=true&style=for-the-badge)
+
 You will need .net core, which is used to host and build the api. You can install .net core by going here:
 
 [Install dotnet core](https://www.microsoft.com/net/learn/get-started)
@@ -34,5 +35,7 @@ You will need a SQL database for the fufilment engine. You can use any of the da
 * SQL Server 2008 onwards
 * PostgreSQL
 * MySQL, MariaDB
+
+You will need to add a SQL_CONNECTION environment variable to contain your SQL connection string
 
 

@@ -1,5 +1,4 @@
-﻿using EpicSoftware.Fulfilment.Domain;
-using EpicSoftware.Fulfilment.Domain.Order;
+﻿using EpicSoftware.Fulfilment.Domain.Order;
 using Microsoft.EntityFrameworkCore;
 
 namespace EpicSoftware.Fulfilment.Context

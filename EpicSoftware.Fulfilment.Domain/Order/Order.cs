@@ -16,7 +16,7 @@ namespace EpicSoftware.Fulfilment.Domain.Order
         [Required]
         public int WorkflowId { get; set; }
         public DateTime OrderDate { get; set; }
-        public DateTime? OrderCompleteDate { get; set; }
+        public DateTime OrderCompleteDate { get; set; }
         public bool OrderComplete { get; set; }
     }
 }
