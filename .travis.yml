@@ -5,3 +5,10 @@ script:
   - dotnet restore
   - dotnet build
   - dotnet test EpicSoftware.Fulfilment.Tests
+notifications:
+  email:
+    recipients:
+      - justin@justinhoward.co.uk
+      - arrayindex@gmail.com
+    on_success: always # default: change
+    on_failure: always # default: always
