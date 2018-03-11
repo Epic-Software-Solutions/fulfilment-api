@@ -1,4 +1,5 @@
 ﻿using System;
+using EpicSoftware.Fulfilment.Api.MappingProfiles;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using EpicSoftware.Fulfilment.Context;
 using EpicSoftware.Fulfilment.Repository.Orders;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace EpicSoftware.Fulfilment.Api
 {
@@ -61,6 +63,15 @@ namespace EpicSoftware.Fulfilment.Api
             //Services
             services.AddTransient<OrdersService.OrdersService, OrdersService.OrdersService>();
             
+            //Automapper
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new OrderProfile());
+            });
+
+            var mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Fulfilment API", Version = "v1" });
@@ -79,12 +90,15 @@ namespace EpicSoftware.Fulfilment.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
             
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

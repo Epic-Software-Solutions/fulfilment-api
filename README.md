@@ -28,14 +28,21 @@ Your server will need to have Docker installed. For ease we recommend [Digital O
 [Contact us](www.epic-software.co.uk) if you would like to look at our hosted plans, or for support.
 
 An individual host does not require massives amounts of ram or compute power, however scale the server size for your needs. The application stack can also be load balanced.
+
+#### Environment Variables
+You will need to set the following Environment Variables:
+
+`SQL_CONNECTION` - This contains your SQL connection string
+
+`ASPNETCORE_URLS` - For development, set this to `http://localhost:5000`
+
+`ASPNETCORE_ENVIRONMENT` - For development, set this to `Development`
 ***
 ### Database
-You will need a SQL database for the fufilment engine. You can use any of the database providers supported by entity framework core. Some are provided below for convinence and the full list can be found [here](https://docs.microsoft.com/en-us/ef/core/providers/)
+You will need a SQL database for the fufilment engine. You can use any of the database providers below. The full list of EntityFramework Core providers can be found [here](https://docs.microsoft.com/en-us/ef/core/providers/), submit a PR to add another provider.
 
 * SQL Server 2008 onwards
 * PostgreSQL
-* MySQL, MariaDB
-
-You will need to add a SQL_CONNECTION environment variable to contain your SQL connection string
+* MySQL
 
 
