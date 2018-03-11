@@ -7,5 +7,6 @@ namespace EpicSoftware.Fulfilment.Repository.Orders
     public interface IOrderRepository: IRepository<Order>
     {
         Task<List<Order>> GetAllOpenOrders();
+        Task<Order> GetOrderById(int orderId);
     }
 }

@@ -21,5 +21,15 @@ namespace EpicSoftware.Fulfilment.Repository.Orders
         {
             return DbSet.AsNoTracking().Where(x => !x.OrderComplete).ToListAsync();
         }
+
+        /// <summary>
+        /// Implementation that queries the database for a single order
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns>Order</returns>
+        public Task<Order> GetOrderById(int orderId)
+        {
+            return DbSet.AsNoTracking().Where(x => x.Id == orderId).SingleOrDefaultAsync();
+        }
     }
 }
